@@ -14,11 +14,12 @@ clearTimeout(x_timer);
 	    $.get(url, function(data){
 		  var temp = data.main.temp;
 		  var winddir = degToCompass(data.wind.deg);
+		  var speed = data.wind.speed;
 		  var icon = data.weather[0].icon;
 		  
 		$('.icon').attr("src","http://openweathermap.org/img/w/"+icon+".png");  
 		$('.temp').html(temp);
-		$('.wind').html(winddir);
+		$('.wind').html(winddir+' Speed: '+speed);
 		
 		console.log(data);
 		console.log(winddir);
