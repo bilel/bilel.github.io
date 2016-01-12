@@ -19,7 +19,7 @@ clearTimeout(x_timer);
 		  
 		$('.icon').attr("src","http://openweathermap.org/img/w/"+icon+".png");  
 		$('.temp').html(temp);
-		$('.wind').html(winddir+' Speed: '+speed);
+		$('.wind').html(' Direction : '+winddir+' Speed: '+speed);
 		
 		console.log(data);
 		console.log(winddir);
