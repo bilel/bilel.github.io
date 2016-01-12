@@ -18,7 +18,7 @@ clearTimeout(x_timer);
 		  var winddir = degToCompass(data.wind.deg);
 		  var speed = data.wind.speed;
 		  var icon = data.weather[0].icon;
-		  var city = data.sys.name+','+data.sys.country;
+		  var city = data.name+','+data.sys.country;
 		  
 		  
 		$('.icon').attr("src","http://openweathermap.org/img/w/"+icon+".png");  
