@@ -19,6 +19,8 @@ clearTimeout(x_timer);
 		$('.icon').attr("src","http://openweathermap.org/img/w/"+icon+".png");  
 		$('.temp').html(temp);
 		$('.wind').html(winddir);
+		
+		console.log(data);
 
       
     });
