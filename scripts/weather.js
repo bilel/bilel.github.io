@@ -21,7 +21,7 @@ clearTimeout(x_timer);
 		$('.wind').html(winddir);
 		
 		console.log(data);
-		console.log(url);
+		console.log(winddir);
 
       
     });
