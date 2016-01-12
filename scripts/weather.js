@@ -1,4 +1,6 @@
 var x_timer;
+var ip ='';
+var geo ='';
 
 $('#search').bind("keyup blur", function (event){
 
@@ -32,10 +34,10 @@ clearTimeout(x_timer);
     $.get(urlip, function(ipdata){
     	var ip = ipdata.ip;
     });
-    if(ip){
+    if(ip!=''){
     var urlgeo = 'http://freegeoip.net/json/'+ip;
     $.get(urlgeo, function(geodata){
-    	var geo = geodata.city;
+    	geo = geodata.city;
     	var code = geodata.country_code;
     	if(geo!=''){
     		$('.yourcity').html(geo);
