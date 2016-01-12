@@ -30,7 +30,7 @@ clearTimeout(x_timer);
 }, 300);
 });
 
-    var urlip = 'https://api.ipify.org/?format=json';
+    /*var urlip = 'https://api.ipify.org/?format=json';
     $.get(urlip, function(ipdata){
     	var ip = ipdata.ip;
     });
@@ -60,7 +60,7 @@ clearTimeout(x_timer);
     		});
     	}
     });
-    }
+    }*/
 
 window.onload = function() {
   document.getElementById("q").focus();
