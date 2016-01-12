@@ -14,7 +14,7 @@ clearTimeout(x_timer);
 	    $.get(url, function(data){
 		  var temp = data.main.temp;
 		  var winddir = degToCompass(data.wind.deg);
-		  var icon = data.weather.icon;
+		  var icon = data.weather[0].icon;
 		  
 		$('.icon').attr("src","http://openweathermap.org/img/w/"+icon+".png");  
 		$('.temp').html(temp);
