@@ -11,7 +11,7 @@ clearTimeout(x_timer);
 	x_timer = setTimeout(function(){
 	if (exclud.indexOf(event.which) === -1) {
 	
-		var url = 'http://api.openweathermap.org/data/2.5/weather?q='+ $('#q').val()+'&units=metric&appid=2de143494c0b295cca9337e1e96b00e0';
+		var url = 'http://api.openweathermap.org/data/2.5/weather?q='+ $('#q').val()+'&units=metric&appid=44db6a862fba0b067b1930da0d769e98';
 		$('.var').empty();
 	    $.get(url, function(data){
 		  var temp = data.main.temp;
