@@ -1,6 +1,6 @@
 var x_timer;
 $('#search').bind("keyup blur", function (event){
-var queryx = $('#q').serialize();
+var queryx = $('#q').val();
 var exclud = [13,27,37,38,39,40];
 clearTimeout(x_timer);
 
