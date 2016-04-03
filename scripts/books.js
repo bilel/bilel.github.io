@@ -8,8 +8,8 @@ clearTimeout(x_timer);
 	x_timer = setTimeout(function(){
 	if (exclud.indexOf(event.which) === -1) {
     $.ajax({
-	  url : "https://crossorigin.me/https://archive.org/advancedsearch.php?q=title:("+queryx+"^100)%20AND%20subject:(librivox)&fl%5B%5D=downloads&fl%5B%5D=format&fl%5B%5D=headerImage&fl%5B%5D=identifier&fl%5B%5D=subject&fl%5B%5D=title&sort%5B%5D=&sort%5B%5D=&sort%5B%5D=&rows=50&page=1&output=json&callback=callback&save=yes#raw",
-      //url: "https://api.soundcloud.com/tracks.json?" + $('#search').serialize(),
+	  url : "https://crossorigin.me/https://archive.org/advancedsearch.php?q=title:("+queryx+"^100)%20AND%20subject:(librivox)&fl%5B%5D=downloads&fl%5B%5D=format&fl%5B%5D=headerImage&fl%5B%5D=identifier&fl%5B%5D=subject&fl%5B%5D=title&sort%5B%5D=&sort%5B%5D=&sort%5B%5D=&rows=50&page=1&output=json&callback=gitto&save=yes#raw",
+      	jsonp: "gitto",
       dataType: 'json',
       beforeSend:
         function(data){
