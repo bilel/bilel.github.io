@@ -22,6 +22,7 @@ clearTimeout(x_timer);
 		  
           $.each(data, function(key, val){
 				metame(val.identifier);
+				console.log(data);
 		  });
           $('#sounds').html(items.join(' '));
 
