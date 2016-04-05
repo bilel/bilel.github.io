@@ -1,7 +1,7 @@
 var x_timer;
 $('#search').bind("keyup blur", function (event){
 var queryx = $('#q').val();
-var exclud = [13,27,37,38,39,40];
+var exclud = [13,27,33,34,35,36,37,38,39,40];
 clearTimeout(x_timer);
 
 
