@@ -8,29 +8,50 @@ clearTimeout(x_timer);
 	x_timer = setTimeout(function(){
 	if (exclud.indexOf(event.which) === -1) {
     $.ajax({
-	  url : "https://crossorigin.me/https://archive.org/advancedsearch.php?q=title:("+queryx+"^100)%20AND%20subject:(librivox)&fl%5B%5D=downloads&fl%5B%5D=format&fl%5B%5D=headerImage&fl%5B%5D=identifier&fl%5B%5D=subject&fl%5B%5D=title&sort%5B%5D=&sort%5B%5D=&sort%5B%5D=&rows=50&page=1&output=json&callback=gitto&save=yes#raw",
-      	jsonp: "gitto",
-      dataType: 'json',
+		////?fl%5B%5D=downloads&fl%5B%5D=format&fl%5B%5D=headerImage&fl%5B%5D=identifier&fl%5B%5D=subject&fl%5B%5D=title&sort%5B%5D=&sort%5B%5D=&sort%5B%5D=&rows=50&page=1&callback=callback&save=yes#raw",
+	  url : "https://crossorigin.me/https://archive.org/advancedsearch.php",
+      jsonp: "callback",
+      dataType: 'jsonp',
+	  type:"GET",
+	  data: {
+		 /*q:"title:("+queryx+")",
+		 subject:"(librivox)",*/
+		 	"q" : "title:("+queryx+ ") AND subject:(librivox ) mediatype:(audio) AND format:(MP3)",
+			qin : "title:("+queryx+") AND subject:(librivox) mediatype:(audio) AND format:(MP3)",
+			fl : "format,identifier,title",
+			//wt : "json",
+			rows : "50",
+        //q: "select title,abstract,url from search.news where query=\"cat\"",
+        output: "json"
+    },
       beforeSend:
         function(data){
           $('#sounds').empty();
         },
       success:
         function(data){
-          $('#sounds').html('')
-          var items = [];
+          $('#sounds').html('');
+          //var items = [];
+
+//var a = new RegExp('\\b' + extension + '\\b','i');	
 		  
-          $.each(data, function(key, val){
+          $.each(data.response.docs, function(key, val){
+			  
+			  
 				metame(val.identifier);
 				
+			  
+				//console.log(val.identifier);
+				
 		  });
-          $('#sounds').html(items.join(' '));
 
-	console.log(data);
+          //$('#sounds').html(items.join(' '));
+
+	//console.log(data);
         }
     });
 }
-}, 300);
+}, 800);
 });
 window.onload = function() {
   document.getElementById("q").focus();
@@ -43,27 +64,63 @@ function metame(book_id){
 	$.getJSON(feedURL, function(data){
 		
 
-var extension = 'mp3';
-var a = new RegExp('\\b' + myWord + '\\b','i');		
+	
 var dire = 	data.d1+'/'+data.dir+'/';
-for(var i = 0; i < data.length; i++) {
-    var obj = data[i];
+//console.log(dire);
+for(var i = 0; i < data.files.length; i++) {
+    var obj = data.files[i];
 	
-	
-	if(a.test(obj.format)){
-		var down = dire+obj.original;
-		items.push("<div id='tracks_list'><li class='row-fluid'><a class='go col-md-9' data-artist='"+obj.creator+"' data-title='"+obj.title+ "' data-url=" + down + " href='javascript:void();'><h2>"+obj.title+"</h2>\
+			  var extension = 'MP3';
+	if(obj.format=='128Kbps MP3'){
+		var down = 'http://'+dire+obj.name;
+		$('#sounds').append("<div id='tracks_list'><li class='row-fluid'><a class='go col-md-9' data-artist='"+obj.creator+"' data-title='"+obj.title+ "' data-url='" + down + "' href='javascript:void(0);'><h2>"+obj.title+"</h2>\
             <span class='plays'>" + obj.album +   " -  <b>" + obj.length  +  "</b></span></a></li></div>");
 		
 	}
 	
 
 }
+		  trackClick();
 	});
 
 
 }
 
+
+function trackClick(){
+  $('.go').click(function(){
+    var url= $(this).data('url') ;
+    var title= $(this).data('title');
+//    var artist = $(this).data('artist');
+    $(this).addClass('playedSong');
+    $('#navbar h2').html(title);
+	var next = ($(this).data('index'))+1;
+    var audioPlayer = document.getElementById('player');
+  audioPlayer.src = url;
+  audioPlayer.load();
+  document.getElementById('player').play();
+  document.title="Playing " + title;
+  $(this).before(function() {
+  $(".download").remove();
+  $(this).prev('img').remove();
+  return "<a class='download' href='"+url+"' target='_blank' download><img class='pull-right' src='http://www.alartec.com/media/arrow-icon_orange.png' width='100'></a>";
+});
+    return false;
+  });
+}
+
+$('#pause').click(function() {
+var audioPlayer = document.getElementById('player');
+  if (audioPlayer.paused == false) {
+      audioPlayer.pause();
+	  $( ".icon" ).remove;
+      $( ".icon" ).html('<i class="fa fa-play"></i>');
+  } else {
+      audioPlayer.play();
+	  $( ".icon" ).remove;
+      $( ".icon" ).html('<i class="fa fa-pause"></i>');
+  }
+});
 
 
 
