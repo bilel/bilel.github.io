@@ -4,7 +4,7 @@ var queryx = $('#q').val();
 var exclud = [13,27,37,38,39,40];
 clearTimeout(x_timer);
 
-//if (event.keyCode != '13' && event.keyCode != '40' && event.keyCode != '39' && event.keyCode != '38' && event.keyCode != '37') {
+
 	x_timer = setTimeout(function(){
 	if (exclud.indexOf(event.which) === -1) {
     $.ajax({
@@ -16,12 +16,12 @@ clearTimeout(x_timer);
 	  data: {
 		 /*q:"title:("+queryx+")",
 		 subject:"(librivox)",*/
-		 	"q" : "title:("+queryx+ ") AND subject:(librivox ) mediatype:(audio) AND format:(MP3)",
-			qin : "title:("+queryx+") AND subject:(librivox) mediatype:(audio) AND format:(MP3)",
+		 	q : "title:("+queryx+ ") AND subject:(librivox ) mediatype:(audio) AND format:(MP3)",
+			//qin : "title:("+queryx+") AND subject:(librivox) mediatype:(audio) AND format:(MP3)",
 			fl : "format,identifier,title",
 			//wt : "json",
 			rows : "50",
-        //q: "select title,abstract,url from search.news where query=\"cat\"",
+        
         output: "json"
     },
       beforeSend:
