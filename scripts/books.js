@@ -8,8 +8,8 @@ clearTimeout(x_timer);
 	x_timer = setTimeout(function(){
 	if (exclud.indexOf(event.which) === -1) {
     $.ajax({
-		////?fl%5B%5D=downloads&fl%5B%5D=format&fl%5B%5D=headerImage&fl%5B%5D=identifier&fl%5B%5D=subject&fl%5B%5D=title&sort%5B%5D=&sort%5B%5D=&sort%5B%5D=&rows=50&page=1&callback=callback&save=yes#raw",
-	  url : "https://crossorigin.me/https://archive.org/advancedsearch.php",
+		
+	  url : "https://archive.org/advancedsearch.php",
       jsonp: "callback",
       dataType: 'jsonp',
 	  type:"GET",
