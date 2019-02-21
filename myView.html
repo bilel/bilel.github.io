@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MyView</title>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+</head>
+
+<body>
+
+
+<div id="app">
+  <ul>
+    <li v-for="data in jsonData">{{data}}</li>
+  </ul>
+</div>
+
+
+
+
+<script type="text/javascript">
+new Vue({
+    el: '#app',
+    data: {
+        json: null
+    },
+    created: function () {
+        var _this = this;
+var ip ='';
+$.getJSON("https://api.ipify.org?format=jsonp&callback=?",
+      function(jsonip) {
+ip = jsonip.ip;
+$.getJSON(BaseUrl+ip, function (json) {
+            _this.json = json;
+        });
+      }
+    );
+
+    }
+});
+</script>
+</body>
+
+</html>
+
+
