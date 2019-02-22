@@ -33,14 +33,14 @@ new Vue({
     },
     created: function () {
         var _this = this;
-var ip ='';
+//var ip ='';
 var BaseUrl='https://geo.ipify.org/api/v1?apiKey=at_pEU902lhKH6VaoYua99LEDzGEo3Oq&ipAddress=';
 $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
       function(jsonip) {
 ip = jsonip.ip;
 $.getJSON(BaseUrl+ip, function (json) {
             _this.json = json;
-            var imgPreUrl = json.location.country;
+            imgPreUrl = json.location.country;
         });
       }
     );
