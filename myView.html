@@ -15,9 +15,6 @@
   <tr>
     <td>Your IP : </td>
     <td><h1>{{json.ip}}</h1></td> 
-    <script>
-    var imgPreUrl={{json.location.region}};
-    </script>
  <td><img v-bind:src="'https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/'+imgPreUrl + '.svg'"></td>
   </tr>
   <tr>
@@ -43,6 +40,7 @@ $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
 ip = jsonip.ip;
 $.getJSON(BaseUrl+ip, function (json) {
             _this.json = json;
+            var imgPreUrl = json.location.country;
         });
       }
     );
