@@ -10,14 +10,19 @@
 
 <body>
 
+<table style="width:100%" border="0">
 
-<div id="app">
-  <ul>
-    <li v-for="data in json">{{data}}</li>
-  </ul>
-</div>
-
-
+  <tr>
+    <td>Your IP : </td>
+    <td><h1>{{data.ip}}</h1></td> 
+    <td><img src="https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/{{data.location.country}}.svg"/></td>
+  </tr>
+  <tr>
+    <td>Region : </td>
+    <td>{{data.location.region}}</td> 
+    <td>{{data.location.city}}</td>
+  </tr>
+</table>
 
 
 <script type="text/javascript">
