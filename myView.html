@@ -6,26 +6,6 @@
 <title>MyView</title>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
-</head>
-
-<body>
-
-
-<table style="width:100%" border="0" id="app" v-if="imgPreUrl">
-
-  <tr>
-    <td>Your IP : </td>
-    <td><h1>{{json.ip}}</h1></td> 
- <td><img v-bind:src="'https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/'+imgPreUrl + '.svg'"></td>
-  </tr>
-  <tr>
-    <td>Region : </td>
-    <td>{{ json.location.region }}</td> 
-    <td>{{ json.location.city }}</td>
-  </tr>
-</table>
-
-
 <script type="text/javascript">
 new Vue({
     el: '#app',
@@ -52,6 +32,27 @@ console.log(imgPreUrl);
     }
 });
 </script>
+</head>
+
+<body>
+
+
+<table style="width:100%" border="0" id="app" v-if="imgPreUrl">
+
+  <tr>
+    <td>Your IP : </td>
+    <td><h1>{{json.ip}}</h1></td> 
+ <td><img v-bind:src="'https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/'+imgPreUrl + '.svg'"></td>
+  </tr>
+  <tr>
+    <td>Region : </td>
+    <td>{{ json.location.region }}</td> 
+    <td>{{ json.location.city }}</td>
+  </tr>
+</table>
+
+
+
 </body>
 
 </html>
