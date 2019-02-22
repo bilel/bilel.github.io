@@ -38,9 +38,12 @@ var BaseUrl='https://geo.ipify.org/api/v1?apiKey=at_pEU902lhKH6VaoYua99LEDzGEo3O
 $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
       function(jsonip) {
 ip = jsonip.ip;
+console.log(ip);
 $.getJSON(BaseUrl+ip, function (json) {
             _this.json = json;
             imgPreUrl = json.location.country;
+console.log(imgPreUrl);
+
         });
       }
     );
