@@ -17,12 +17,12 @@
   <tr>
     <td>Your IP : </td>
     <td><h1>{{json.ip}}</h1></td> 
- <td><img v-bind:src="'https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/'+imgPreUrl + '.svg'"></td>
+
   </tr>
   <tr>
     <td>Region : </td>
     <td>{{ json.location.region }}</td> 
-    <td>{{ json.location.city }}</td>
+
   </tr>
 </table>
 
@@ -30,8 +30,7 @@
 new Vue({
     el: '#app',
     data: {
-        json: [],
-imgPreUrl:''
+        json: []
     },
     created: function () {
         var _this = this;
@@ -43,8 +42,7 @@ ip = jsonip.ip;
 console.log(ip);
 $.getJSON(BaseUrl+ip, function (json) {
             _this.json = json;
-            imgPreUrl = json.location.country;
-console.log(imgPreUrl);
+
 
         });
       }
