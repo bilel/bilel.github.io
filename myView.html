@@ -10,7 +10,8 @@
 
 <body>
 
-<table style="width:100%" border="0" id="app">
+
+<table style="width:100%" border="0" id="app" v-if="imgPreUrl">
 
   <tr>
     <td>Your IP : </td>
@@ -29,7 +30,7 @@
 new Vue({
     el: '#app',
     data: {
-        json: ''
+        json: []
     },
     created: function () {
         var _this = this;
