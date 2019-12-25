@@ -72,7 +72,7 @@ function trackClick(){
   $(this).before(function() {
   $(".download").remove();
   $(this).prev('img').remove();
-  return "<a class='download' href='"+url+"' target='_blank' download><img class='pull-right' src='http://www.alartec.com/media/arrow-icon_orange.png' width='100'></a>";
+  return "<a class='download' href='"+url+"' target='_blank' download><i style="color:#fff;" class="fa fa-arrow-down"></i></a>";
 });
     return false;
   });
